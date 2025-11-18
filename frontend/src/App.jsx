@@ -6,16 +6,16 @@ import MainLayout from './components/MainLayout'
 import './App.css'
 import Login from "./pages/Login"
 import Dashboard from './pages/Dashboard'
-import DevicesPage from './pages/DevicesPage'  
-import AlertsPage from './pages/AlertsPage'   
-import ReportsPage from './pages/ReportsPage'  
-import UsersPage from './pages/UsersPage'     
+import DevicesPage from './pages/DevicesPage'  // For FR-1.2 (Access Points)
+import AlertsPage from './pages/AlertsPage'    // For FR-1.3.2 (Alerts)
+import ReportsPage from './pages/ReportsPage'  // For FR-1.6 (Reporting)
+import UsersPage from './pages/UsersPage'      // For FR-1.5 (User Mgmt)
 import AnalyticsPage from './pages/AnalyticsPage';
 
 function App() {
   const { user, checkAuth } = useUserStore()
 
-
+  // Optional: specific route protection for Admin-only pages
   const AdminRoute = ({ children }) => {
     return user?.role === 'admin' ? children : <Navigate to="/" />
   }

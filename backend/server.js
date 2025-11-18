@@ -10,12 +10,15 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-
+const __dirname = path.resolve();
 app.use(express.json());
-app.use(cors({
-    origin: 'http://localhost:5173', // React Frontend URL
-    credentials: true
-}));
+
+if (process.env.NODE_ENV === "development") {
+    app.use(cors({
+        origin: 'http://localhost:5173', 
+        credentials: true
+    }));
+}
 
 if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "/frontend/dist")));

@@ -21,9 +21,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import { useDataStore } from '../stores/useDataStore';
 
-/**
- * Simple chart sizer that waits for valid dimensions
- */
+
 const ChartSizer = ({ children, minHeight = 300 }) => {
   const ref = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -75,7 +73,7 @@ const Dashboard = () => {
   // 1. Get all data from store, including trafficLogs
   const { devices, alerts, trafficLogs, fetchDevices, fetchAlerts, fetchTrafficLogs } = useDataStore();
 
-  // 2. Auto-Refresh Logic (Same as Analytics Page)
+  // 2. Auto-Refresh Logic 
   useEffect(() => {
     const fetchData = () => {
       fetchDevices();
@@ -272,5 +270,6 @@ const StatCard = ({ title, value, change, subtext, icon, color, isNegative }) =>
     <div className={`p-3 rounded-lg h-fit ${color}`}>{icon}</div>
   </div>
 );
+
 
 export default Dashboard;

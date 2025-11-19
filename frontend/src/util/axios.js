@@ -2,7 +2,7 @@ import axios from "axios";
 
 const axiosInstance = axios.create({
     baseURL: "https://smart-campus-wifi-management.onrender.com/api", // Your backend URL
-    withCredentials: true, // Important for CORS
+    withCredentials: true, 
 });
 
 
@@ -16,5 +16,6 @@ axiosInstance.interceptors.request.use(
     },
     (error) => Promise.reject(error)
 );
+
 
 export default axiosInstance;

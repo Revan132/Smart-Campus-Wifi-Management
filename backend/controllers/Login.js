@@ -11,7 +11,7 @@ export const login = async (req, res) => {
 
         const user = await User.findOne({ username });
 
-        // Plain text comparison for mock data simplicity
+      
         if (!user || user.password !== password) {
             return res.status(401).json({ success: false, message: "Invalid credentials" });
         }
@@ -36,4 +36,5 @@ export const login = async (req, res) => {
     } catch (error) {
         res.status(500).json({ success: false, message: error.message });
     }
+
 };

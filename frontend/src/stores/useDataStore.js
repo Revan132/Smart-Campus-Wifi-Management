@@ -18,7 +18,7 @@ export const useDataStore = create((set) => ({
         } catch (error) {
             console.error("Failed to fetch devices:", error);
             set({ loading: false });
-            // Optional: toast.error("Could not load devices");
+            
         }
     },
 
@@ -61,7 +61,7 @@ export const useDataStore = create((set) => ({
         try {
             await axiosInstance.delete(`/devices/${id}`);
             
-            // Remove from local state immediately so UI updates without refresh
+          
             set((state) => ({
                 devices: state.devices.filter((device) => device._id !== id)
             }));
@@ -113,6 +113,7 @@ export const useDataStore = create((set) => ({
             console.error("Fetch error:", error);
         }
     }
+
 
 
 

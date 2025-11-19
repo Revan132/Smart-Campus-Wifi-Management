@@ -4,14 +4,14 @@ import { useUserStore } from '../stores/useUserStore';
 import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  // CHANGED: 'email' -> 'username'
+
   const [formData, setFormData] = useState({ username: '', password: '' });
   const { loading, login } = useUserStore();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Pass formData correctly (contains username, password)
+  
     const success = await login(formData);
     if (success) navigate("/");
   };
@@ -65,5 +65,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;

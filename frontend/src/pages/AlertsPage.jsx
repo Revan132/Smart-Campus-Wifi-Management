@@ -19,7 +19,7 @@ const AlertsPage = () => {
     return alert.severity === filterSeverity;
   });
 
-  // Helper for styling
+
   const getSeverityStyles = (severity) => {
     switch (severity) {
       case 'high': return 'bg-red-50 border-red-100 text-red-700';
@@ -29,7 +29,7 @@ const AlertsPage = () => {
     }
   };
 
-  // Helper for formatting MongoDB Date
+
   const formatTime = (isoString) => {
     if (!isoString) return 'Just now';
     return new Date(isoString).toLocaleString('en-US', {
@@ -119,5 +119,6 @@ const AlertsPage = () => {
     </div>
   );
 };
+
 
 export default AlertsPage;

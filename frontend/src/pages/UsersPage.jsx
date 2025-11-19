@@ -54,7 +54,7 @@ const UsersPage = () => {
                 <tr>
                   <th className="px-6 py-4">User Identity</th>
                   <th className="px-6 py-4">Role</th>
-                  {/* Removed 'Created At' Header */}
+        
                   <th className="px-6 py-4 text-right">Actions</th>
                 </tr>
               </thead>
@@ -123,5 +123,6 @@ const UsersPage = () => {
     </div>
   );
 };
+
 
 export default UsersPage;

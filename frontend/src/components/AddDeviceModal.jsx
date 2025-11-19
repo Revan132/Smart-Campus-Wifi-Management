@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { FiX, FiSave, FiLoader, FiAlertCircle } from 'react-icons/fi'; // Added Alert Icon
+import { FiX, FiSave, FiLoader, FiAlertCircle } from 'react-icons/fi'; 
 import { useDataStore } from '../stores/useDataStore';
 
 const AddDeviceModal = ({ isOpen, onClose }) => {
   const { addDevice } = useDataStore();
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(''); // Error State
+  const [error, setError] = useState('');
   
   const [formData, setFormData] = useState({
     deviceId: '',
@@ -22,7 +22,7 @@ const AddDeviceModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError(''); // Clear previous errors
+    setError(''); 
 
     // 1. Validate MAC Address Format
     if (!macRegex.test(formData.macAddress)) {
@@ -160,5 +160,6 @@ const AddDeviceModal = ({ isOpen, onClose }) => {
     </div>
   );
 };
+
 
 export default AddDeviceModal;

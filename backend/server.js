@@ -22,7 +22,8 @@ app.use('/api', apiRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-    console.log(`API Base: http://localhost:${PORT}/api`);
+    console.log(`API Base: https://smart-campus-wifi-management.onrender.com/api`);
     dbConnect();
     startSimulator();
+
 });

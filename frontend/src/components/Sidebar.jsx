@@ -4,19 +4,17 @@ import { FiHome, FiWifi, FiActivity, FiFileText, FiUsers } from 'react-icons/fi'
 import { useUserStore } from '../stores/useUserStore';
 
 const Sidebar = () => {
-  const { user } = useUserStore(); // Get current user to check role
+  const { user } = useUserStore(); 
 
-  // 1. Define Common Links (Accessible by Everyone: Admin & Network Engineer)
-  // Based on Use Case Diagram: "Monitor Networks", "Get Alerts", "Analyse Metrics"
+
   const navItems = [
     { name: 'Dashboard', path: '/', icon: <FiHome /> },
-    { name: 'Access Points', path: '/devices', icon: <FiWifi /> }, // Monitoring is for everyone
+    { name: 'Access Points', path: '/devices', icon: <FiWifi /> }, 
     { name: 'Analytics', path: '/analytics', icon: <FiActivity /> },
-    { name: 'Reports', path: '/reports', icon: <FiFileText /> }, // SRS Sequence Diagram shows Engineers generating reports
+    { name: 'Reports', path: '/reports', icon: <FiFileText /> }, 
   ];
 
-  // 2. Conditionally Add Admin-Only Links
-  // Based on Use Case Diagram: "Manage Users" is Admin only
+
   if (user?.role === 'admin') {
     navItems.push({ 
       name: 'Users', 
@@ -48,5 +46,6 @@ const Sidebar = () => {
     </aside>
   );
 };
+
 
 export default Sidebar;

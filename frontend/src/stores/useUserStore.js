@@ -3,7 +3,7 @@ import axiosInstance from "../util/axios";
 import { toast } from "react-hot-toast";
 
 export const useUserStore = create((set) => ({
-    user: JSON.parse(localStorage.getItem("user")) || null, // Persist user on reload
+    user: JSON.parse(localStorage.getItem("user")) || null, 
     loading: false,
 
     login: async ({ username, password }) => {
@@ -36,4 +36,5 @@ export const useUserStore = create((set) => ({
         set({ user: null });
         toast.success("Logged out");
     }
+
 }));

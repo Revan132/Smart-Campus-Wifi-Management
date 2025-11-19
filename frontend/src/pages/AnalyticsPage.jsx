@@ -15,16 +15,7 @@ import {
 import { FiActivity, FiMap, FiWifi, FiLoader } from 'react-icons/fi';
 import { useDataStore } from '../stores/useDataStore';
 
-/**
- * VisibleChartSizer
- * - Ensures the wrapper is visible and has positive measured width/height before rendering charts.
- * - Combines ResizeObserver + visibility checks + rAF retry loop for tricky layouts (tabs, animations).
- *
- * Props:
- * - style: wrapper style (should include height fallback)
- * - children: function receiving ({ width, height }) returning chart JSX
- * - placeholder: optional placeholder while waiting
- */
+
 const VisibleChartSizer = ({ style = {}, children, placeholder = null }) => {
   const ref = useRef(null);
   const [size, setSize] = useState({ width: 0, height: 0, visible: false });
@@ -38,32 +29,32 @@ const VisibleChartSizer = ({ style = {}, children, placeholder = null }) => {
       const rect = el.getBoundingClientRect();
       const w = Math.max(0, Math.floor(rect.width));
       const h = Math.max(0, Math.floor(rect.height));
-      // offsetParent null means element (or ancestor) is display:none or not in layout
+
       const visible = el.offsetParent !== null && w > 0 && h > 0;
       return { w, h, visible };
     };
 
-    // Update state only if changed
+
     const updateIfDifferent = (w, h, visible) => {
       setSize(prev => (prev.width !== w || prev.height !== h || prev.visible !== visible) ? { width: w, height: h, visible } : prev);
     };
 
-    // ResizeObserver path
+
     if (typeof ResizeObserver !== 'undefined') {
       const ro = new ResizeObserver(() => {
         const { w, h, visible } = readRect();
         updateIfDifferent(w, h, visible);
       });
       ro.observe(el);
-      // initial read
+
       const { w, h, visible } = readRect();
       updateIfDifferent(w, h, visible);
       return () => { mounted = false; ro.disconnect(); };
     }
 
-    // Fallback: requestAnimationFrame retry loop + window resize
+
     let attempts = 0;
-    const MAX_ATTEMPTS = 60; // ~1 second at 60fps
+    const MAX_ATTEMPTS = 60; 
     const tick = () => {
       if (!mounted) return;
       attempts++;
@@ -142,7 +133,7 @@ const AnalyticsPage = () => {
     users: log.activeUsers
   }));
 
-  // Mock Heatmap
+  
   const heatmapData = [
     { zone: 'Lib-1', signal: 95 }, { zone: 'Lib-2', signal: 88 }, { zone: 'Lib-3', signal: 45 },
     { zone: 'BH-1', signal: 92 }, { zone: 'BH-2', signal: 76 }, { zone: 'BH-3', signal: 30 },
@@ -261,5 +252,6 @@ const AnalyticsPage = () => {
     </div>
   );
 };
+
 
 export default AnalyticsPage;

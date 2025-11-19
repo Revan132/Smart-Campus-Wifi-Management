@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { FiSearch, FiPlus, FiRefreshCw, FiWifi, FiCpu, FiTrash2 } from 'react-icons/fi'; // Import FiTrash2
+import { FiSearch, FiPlus, FiRefreshCw, FiWifi, FiCpu, FiTrash2 } from 'react-icons/fi'; 
 import toast from 'react-hot-toast';
 import { useUserStore } from '../stores/useUserStore';
 import { useDataStore } from '../stores/useDataStore';
@@ -7,7 +7,7 @@ import AddDeviceModal from '../components/AddDeviceModal';
 
 const DevicesPage = () => {
   const { user } = useUserStore();
-  const { devices, fetchDevices, deleteDevice, loading } = useDataStore(); // Import deleteDevice
+  const { devices, fetchDevices, deleteDevice, loading } = useDataStore(); 
   
   const [searchTerm, setSearchTerm] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -188,5 +188,6 @@ const DevicesPage = () => {
     </div>
   );
 };
+
 
 export default DevicesPage;

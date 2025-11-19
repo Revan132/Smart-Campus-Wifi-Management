@@ -3,7 +3,7 @@ import { FiDownload, FiFileText, FiMap } from 'react-icons/fi';
 import toast from 'react-hot-toast';
 import { useDataStore } from '../stores/useDataStore';
 import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable'; // FIX 1: Import the function directly
+import autoTable from 'jspdf-autotable'; 
 
 const ReportsPage = () => {
   const { devices, fetchDevices } = useDataStore();
@@ -59,7 +59,7 @@ const ReportsPage = () => {
             ];
         });
 
-        // --- 3. Generate Table (FIX 2: Use function call) ---
+        // --- 3. Generate Table ---
         autoTable(doc, {
             startY: 45,
             head: [['Zone Name', 'Total APs', 'Active Users', 'Avg Load/AP', 'Offline APs', 'Health Score']],
@@ -83,7 +83,6 @@ const ReportsPage = () => {
         });
 
         // --- 4. Summary ---
-        // FIX 3: Access finalY from the lastTable property attached to doc by the plugin
         const finalY = (doc.lastAutoTable && doc.lastAutoTable.finalY) || 150;
         
         doc.setFontSize(10);
@@ -152,5 +151,6 @@ const ReportsPage = () => {
     </div>
   );
 };
+
 
 export default ReportsPage;
